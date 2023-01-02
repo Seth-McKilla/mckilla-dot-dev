@@ -7,9 +7,8 @@ featured: true
 draft: false
 tags:
   - docs
-ogImage: ""
-description:
-  Some rules & recommendations for creating or adding new posts using AstroPaper
+ogImage: ''
+description: Some rules & recommendations for creating or adding new posts using AstroPaper
   theme.
 ---
 
@@ -56,7 +55,7 @@ tags:
   - some
   - example
   - tags
-ogImage: ""
+ogImage: ''
 description: This is the example description of the example post.
 ---
 ```

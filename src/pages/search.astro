@@ -1,22 +1,22 @@
 ---
-import { SITE } from "src/config";
-import Layout from "@layouts/Layout.astro";
-import Main from "@layouts/Main.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import Search from "@components/Search";
-import type { Frontmatter } from "src/types";
+import { SITE } from 'src/config';
+import Layout from '@layouts/Layout.astro';
+import Main from '@layouts/Main.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import Search from '@components/Search';
+import type { Frontmatter } from 'src/types';
 
 // Retrieve all articles
-const posts = await Astro.glob<Frontmatter>("../contents/**/*.md");
+const posts = await Astro.glob<Frontmatter>('../contents/**/*.md');
 
 // List of items to search in
 const searchList = posts
   .filter(({ frontmatter }) => !frontmatter.draft)
-  .map(post => ({
+  .map((post) => ({
     title: post.frontmatter.title,
     description: post.frontmatter.description,
-    headings: post.getHeadings().map(h => h.text),
+    headings: post.getHeadings().map((h) => h.text),
     frontmatter: post.frontmatter,
   }));
 ---

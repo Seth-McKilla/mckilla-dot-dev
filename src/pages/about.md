@@ -1,6 +1,6 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: 'About'
 ---
 
 <div>

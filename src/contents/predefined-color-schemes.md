@@ -7,9 +7,8 @@ featured: false
 draft: false
 tags:
   - color-schemes
-ogImage: ""
-description:
-  Some of the well-crafted, predefined color schemes for AstroPaper blog
+ogImage: ''
+description: Some of the well-crafted, predefined color schemes for AstroPaper blog
   theme.
 ---
 
@@ -29,7 +28,7 @@ Light color scheme has to be defined using the css selector `:root` and `html[da
 
 ```css
 :root,
-html[data-theme="light"] {
+html[data-theme='light'] {
   --color-fill: 246, 238, 225;
   --color-text-base: 1, 44, 86;
   --color-accent: 225, 74, 57;
@@ -45,7 +44,7 @@ html[data-theme="light"] {
 
 ```css
 :root,
-html[data-theme="light"] {
+html[data-theme='light'] {
   --color-fill: 242, 245, 236;
   --color-text-base: 53, 53, 56;
   --color-accent: 17, 88, 209;
@@ -61,7 +60,7 @@ html[data-theme="light"] {
 
 ```css
 :root,
-html[data-theme="light"] {
+html[data-theme='light'] {
   --color-fill: 250, 252, 252;
   --color-text-base: 34, 46, 54;
   --color-accent: 211, 0, 106;
@@ -80,7 +79,7 @@ Light color scheme has to be defined as `html[data-theme="dark"]`.
 ![deep-oyster-color-scheme](https://user-images.githubusercontent.com/53733092/192314524-45ec5904-3d8f-450a-9edf-1e32c5e11d6c.png)
 
 ```css
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --color-fill: 33, 35, 61;
   --color-text-base: 244, 247, 245;
   --color-accent: 255, 82, 86;
@@ -95,7 +94,7 @@ html[data-theme="dark"] {
 ![pinky-dark-color-scheme](https://user-images.githubusercontent.com/53733092/192307050-fbd55326-911c-4001-87c6-a8ad9378ac2e.png)
 
 ```css
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --color-fill: 53, 54, 64;
   --color-text-base: 233, 237, 241;
   --color-accent: 255, 120, 200;

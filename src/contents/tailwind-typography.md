@@ -7,7 +7,7 @@ draft: false
 tags:
   - TypeScript
   - Astro
-description: "EXAMPLE POST: About Tailwind Typography Plugin and how you can use it effectively."
+description: 'EXAMPLE POST: About Tailwind Typography Plugin and how you can use it effectively.'
 ---
 
 > This article is from [TailwindLabs](https://tailwindcss-typography.vercel.app/). I put this article to demonstrate how you can write blog posts/articles using AstroPaper theme.
@@ -27,14 +27,13 @@ It adds a new `prose` class that you can slap on any block of vanilla HTML conte
 <article class="prose">
   <h1>Garlic bread with cheese: What the science tells us</h1>
   <p>
-    For years parents have espoused the health benefits of eating garlic bread
-    with cheese to their children, with the food earning such an iconic status
-    in our culture that kids will often dress up as warm, cheesy loaf for
-    Halloween.
+    For years parents have espoused the health benefits of eating garlic bread with cheese to their
+    children, with the food earning such an iconic status in our culture that kids will often dress
+    up as warm, cheesy loaf for Halloween.
   </p>
   <p>
-    But a recent study shows that the celebrated appetizer may be linked to a
-    series of rabies cases springing up around the country.
+    But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases
+    springing up around the country.
   </p>
   <!-- ... -->
 </article>

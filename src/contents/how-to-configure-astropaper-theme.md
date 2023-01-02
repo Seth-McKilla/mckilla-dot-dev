@@ -8,7 +8,7 @@ draft: false
 tags:
   - configuration
   - docs
-ogImage: ""
+ogImage: ''
 description: How you can make AstroPaper theme absolutely yours.
 ---
 
@@ -25,11 +25,11 @@ Another important configurations lies in `src/config.ts` file. Within that file,
 ```js
 // file: src/config.ts
 export const SITE = {
-  website: "https://astro-paper.pages.dev/",
-  author: "Sat Naing",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "AstroPaper",
-  ogImage: "astropaper-og.jpg",
+  website: 'https://astro-paper.pages.dev/',
+  author: 'Sat Naing',
+  desc: 'A minimal, responsive and SEO-friendly Astro blog theme.',
+  title: 'AstroPaper',
+  ogImage: 'astropaper-og.jpg',
   lightAndDarkMode: true,
   postPerPage: 3,
 };

@@ -10,8 +10,7 @@ tags:
   - forestry-cms
   - astro-paper
 ogImage: https://res.cloudinary.com/noezectz/v1663745737/astro-paper/astropaper-x-forestry-og_kqfwp0.png
-description:
-  Step by step process of connecting Astro-Paper blog theme with Forestry
+description: Step by step process of connecting Astro-Paper blog theme with Forestry
   Headless CMS.
 ---
 
@@ -21,11 +20,11 @@ In this article, I will explain step by step process of connecting AstroPaper th
 
 ## What is Forestry?
 
-[Forestry](https://forestry.io/ "Forestry Website") is a git-based headless CMS and we can manage our markdown contents easily by using that. Although it is not an open-sourced CMS, it has a good free plan by which we can import up to 3 sites (3 repositories). In this article, I'll demonstrate how we can use Forestry as git-based CMS of our AstroPaper blog theme.
+[Forestry](https://forestry.io/ 'Forestry Website') is a git-based headless CMS and we can manage our markdown contents easily by using that. Although it is not an open-sourced CMS, it has a good free plan by which we can import up to 3 sites (3 repositories). In this article, I'll demonstrate how we can use Forestry as git-based CMS of our AstroPaper blog theme.
 
 ## Login / Register an account at Forestry.io
 
-First of all, you have to create an account at [Forestry website](https://app.forestry.io/login "Forestry Login Page"). I usually sign up with my Github account.
+First of all, you have to create an account at [Forestry website](https://app.forestry.io/login 'Forestry Login Page'). I usually sign up with my Github account.
 
 ![Forestry Login page](https://res.cloudinary.com/noezectz/v1663739096/astro-paper/Forestry-io_hk5yzv.png)
 

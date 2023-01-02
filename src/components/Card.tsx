@@ -1,5 +1,5 @@
-import Datetime from "./Datetime";
-import type { Frontmatter } from "src/types";
+import Datetime from './Datetime';
+import type { Frontmatter } from 'src/types';
 
 export interface Props {
   href?: string;
@@ -8,10 +8,10 @@ export interface Props {
 }
 
 const styles = {
-  cardContainer: "my-6",
+  cardContainer: 'my-6',
   titleLink:
-    "text-skin-accent font-medium text-lg underline-offset-4 decoration-dashed focus-visible:no-underline focus-visible:underline-offset-0 inline-block",
-  titleHeading: "font-medium text-lg decoration-dashed hover:underline",
+    'text-skin-accent font-medium text-lg underline-offset-4 decoration-dashed focus-visible:no-underline focus-visible:underline-offset-0 inline-block',
+  titleHeading: 'font-medium text-lg decoration-dashed hover:underline',
 };
 
 export default function Card({ href, post, secHeading = true }: Props) {
