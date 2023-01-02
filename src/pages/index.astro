@@ -23,7 +23,7 @@ const socialCount = SOCIALS.filter((social) => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Mingalaba</h1>
+      <h1>Seth's dev diary</h1>
       <a target="_blank" href="/rss.xml" class="rss-link" aria-label="rss feed" title="RSS Feed">
         <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
           ><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path
@@ -35,25 +35,16 @@ const socialCount = SOCIALS.filter((social) => social.active).length;
       </a>
 
       <p>
-        Hey there! I'm a Full Stack TypeScript Developer with a focus on SaaS and NextJS. I love
-        building scalable and reliable applications using TypeScript, and have experience with
-        NextJS and the full development life cycle. I'm always looking to improve my skills and stay
-        up-to-date with industry developments. Thanks for stopping by!
-      </p>
-      <p>
-        Read the blog posts or check
-        <LinkButton
-          className="hover:text-skin-accent underline underline-offset-4 decoration-dashed"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton> for more info.
+        Thanks for stopping by! I'm Seth, a full stack developer who is passionate about OSS &
+        building SaaS applications in public. This is a space for me to share my thoughts and
+        experiences as a full stack developer obsessed with NextJS & Typescript. I hope you find my
+        musings helpful and informative.
       </p>
       {
         // only display if at least one social link is enabled
         socialCount > 0 && (
           <div class="social-wrapper">
-            <div class="social-links">Social Links:</div>
+            <div class="social-links">Let's connect!</div>
             <Socials />
           </div>
         )
@@ -66,7 +57,7 @@ const socialCount = SOCIALS.filter((social) => social.active).length;
       featuredPosts.length > 0 && (
         <>
           <section id="featured">
-            <h2>Featured</h2>
+            <h2>Featured Posts</h2>
             <ul>
               {featuredPosts.map(({ frontmatter }) => (
                 <Card
