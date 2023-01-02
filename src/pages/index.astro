@@ -11,7 +11,7 @@ import type { Frontmatter } from 'src/types';
 import Socials from '@components/Socials.astro';
 import { SOCIALS } from '@config';
 
-const posts = await Astro.glob<Frontmatter>('../contents/**/*.md');
+const posts = await Astro.glob<Frontmatter>('../articles/**/*.md');
 
 const sortedPosts = getSortedPosts(posts);
 const featuredPosts = sortedPosts.filter(({ frontmatter }) => frontmatter.featured);
@@ -23,7 +23,7 @@ const socialCount = SOCIALS.filter((social) => social.active).length;
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Seth's dev diary</h1>
+      <h1>Seth's dev digest</h1>
       <a target="_blank" href="/rss.xml" class="rss-link" aria-label="rss feed" title="RSS Feed">
         <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
           ><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path

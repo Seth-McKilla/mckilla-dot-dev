@@ -6,7 +6,7 @@ export const get: APIRoute = async ({ params }) => ({
   body: await generateOgImage(params.ogTitle),
 });
 
-const postImportResult = import.meta.glob<MarkdownInstance<Frontmatter>>('../contents/**/**/*.md', {
+const postImportResult = import.meta.glob<MarkdownInstance<Frontmatter>>('../articles/**/**/*.md', {
   eager: true,
 });
 const posts = Object.values(postImportResult);

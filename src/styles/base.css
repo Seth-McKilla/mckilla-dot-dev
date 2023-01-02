@@ -77,7 +77,7 @@
   tfoot td:first-child {
     padding-left: 0.5714286em;
   }
-  .prose h2#table-of-contents {
+  .prose h2#table-of-articles {
     @apply mb-2;
   }
   .prose details {
@@ -86,7 +86,7 @@
   .prose summary {
     @apply focus-outline;
   }
-  .prose h2#table-of-contents + p {
+  .prose h2#table-of-articles + p {
     @apply hidden;
   }
 

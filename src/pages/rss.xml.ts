@@ -4,7 +4,7 @@ import type { Frontmatter } from 'src/types';
 import type { MarkdownInstance } from 'astro';
 import slugify from '@utils/slugify';
 
-const postImportResult = import.meta.glob<MarkdownInstance<Frontmatter>>('../contents/**/**/*.md', {
+const postImportResult = import.meta.glob<MarkdownInstance<Frontmatter>>('../articles/**/**/*.md', {
   eager: true,
 });
 const posts = Object.values(postImportResult);
