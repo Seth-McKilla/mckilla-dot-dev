@@ -1,15 +1,14 @@
 ---
-author: Sat Naing
+author: Seth McCullough
 datetime: 2022-09-23T15:22:00Z
-title: Adding new posts in AstroPaper theme
-slug: adding-new-posts-in-astropaper-theme
+title: Template post
+slug: template-post
 featured: true
 draft: false
 tags:
   - docs
 ogImage: ''
-description: Some rules & recommendations for creating or adding new posts using AstroPaper
-  theme.
+description: Template placeholder post.
 ---
 
 Here are some rules/recommendations, tips & ticks for creating new posts in AstroPaper blog theme.
