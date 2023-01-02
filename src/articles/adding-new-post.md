@@ -4,7 +4,7 @@ datetime: 2022-09-23T15:22:00Z
 title: Template post
 slug: template-post
 featured: true
-draft: false
+draft: true
 tags:
   - docs
 ogImage: ''
