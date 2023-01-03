@@ -1,6 +1,6 @@
 import Fuse from 'fuse.js';
 import { useEffect, useRef, useState } from 'react';
-import Card from '@components/Card';
+import CardPost from '@components/CardPost';
 import slugify from '@utils/slugify';
 import type { Frontmatter } from 'src/types';
 
@@ -101,7 +101,7 @@ export default function SearchBar({ searchList }: Props) {
       <ul>
         {searchResults &&
           searchResults.map(({ item, refIndex }) => (
-            <Card
+            <CardPost
               post={item.frontmatter}
               href={`/posts/${slugify(item.frontmatter)}`}
               key={`${refIndex}-${slugify(item.frontmatter)}`}

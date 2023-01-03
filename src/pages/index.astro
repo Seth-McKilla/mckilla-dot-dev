@@ -4,7 +4,7 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import LinkButton from '@components/LinkButton.astro';
 import Hr from '@components/Hr.astro';
-import Card from '@components/Card';
+import CardPost from '@components/CardPost';
 import getSortedPosts from '@utils/getSortedPosts';
 import slugify from '@utils/slugify';
 import type { Frontmatter } from 'src/types';
@@ -59,7 +59,7 @@ const socialCount = SOCIALS.filter((social) => social.active).length;
             <h2>Featured Posts</h2>
             <ul>
               {featuredPosts.map(({ frontmatter }) => (
-                <Card
+                <CardPost
                   href={`/posts/${slugify(frontmatter)}`}
                   post={frontmatter}
                   secHeading={false}
@@ -79,7 +79,7 @@ const socialCount = SOCIALS.filter((social) => social.active).length;
           sortedPosts.map(
             ({ frontmatter }, index) =>
               index < 4 && (
-                <Card
+                <CardPost
                   href={`/posts/${slugify(frontmatter)}`}
                   post={frontmatter}
                   secHeading={false}

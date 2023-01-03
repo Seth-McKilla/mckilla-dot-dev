@@ -4,7 +4,7 @@ import Layout from '@layouts/Layout.astro';
 import Main from '@layouts/Main.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
-import Card from '@components/Card';
+import CardPost from '@components/CardPost';
 import getUniqueTags from '@utils/getUniqueTags';
 import getPostsByTag from '@utils/getPostsByTag';
 import type { MarkdownInstance } from 'astro';
@@ -46,7 +46,7 @@ const tagPosts = getPostsByTag(posts, tag);
     <ul>
       {
         tagPosts.map(({ frontmatter }) => (
-          <Card href={`/posts/${slugify(frontmatter)}`} post={frontmatter} />
+          <CardPost href={`/posts/${slugify(frontmatter)}`} post={frontmatter} />
         ))
       }
     </ul>

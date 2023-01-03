@@ -14,7 +14,7 @@ const styles = {
   titleHeading: 'font-medium text-lg decoration-dashed hover:underline',
 };
 
-export default function Card({ href, post, secHeading = true }: Props) {
+export default function CardPost({ href, post, secHeading = true }: Props) {
   return (
     <li className={styles.cardContainer}>
       <a href={href} className={styles.titleLink}>

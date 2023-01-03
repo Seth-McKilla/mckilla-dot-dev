@@ -4,10 +4,18 @@ import Layout from '@layouts/Layout.astro';
 import Main from '@layouts/Main.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
+import CardProject from '@components/CardProject.astro';
 ---
 
 <Layout title={`Projects | ${SITE.title}`}>
   <Header activeNav="projects" />
-  <Main pageTitle="Projects" pageDesc="Check out what I've been up to." />
+  <Main pageTitle="Projects" pageDesc="Check out what I've been up to.">
+    <CardProject
+      title="realtyflow"
+      description="From leads to commissions, realtyflow automates every step of the real estate transaction to leverage your time and make your life easier."
+      imgSrc="/assets/images/projects/realtyflow.png"
+      imgLink="https://realtyflow.co"
+    />
+  </Main>
   <Footer />
 </Layout>

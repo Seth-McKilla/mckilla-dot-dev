@@ -4,7 +4,7 @@ import Layout from '@layouts/Layout.astro';
 import Main from '@layouts/Main.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
-import Card from '@components/Card';
+import CardPost from '@components/CardPost';
 import LinkButton from '@components/LinkButton.astro';
 import slugify from '@utils/slugify';
 import type { MarkdownInstance } from 'astro';
@@ -28,7 +28,7 @@ const next = pageNum < totalPages ? '' : 'disabled';
     <ul>
       {
         posts.map(({ frontmatter }) => {
-          return <Card href={`/posts/${slugify(frontmatter)}`} post={frontmatter} />;
+          return <CardPost href={`/posts/${slugify(frontmatter)}`} post={frontmatter} />;
         })
       }
     </ul>
