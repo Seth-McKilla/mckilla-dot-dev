@@ -1,26 +1,27 @@
 ---
 author: Seth McCullough
-datetime: 2023-01-04T12:30:00Z
-title: 'TypeScript, NextJS 13, Tailwindcss, MongoDB, and Vercel: The Full Stack Dream Team'
+datetime: 2023-01-05T14:00:00Z
+title: 'TypeScript, NextJS 13, Tailwindcss, and Vercel: The Full Stack Dream Team'
 slug: saas-starter-pack-1
 featured: true
-draft: true
+draft: false
 tags:
-  - nextjs
   - typescript
+  - nextjs
   - tailwindcss
-  - mongodb
   - vercel
   - saas-starter-pack
-ogImage: ''
-description: Learn how to set up a repository with TypeScript, NextJS 13, Tailwindcss, MongoDB, and Vercel for efficient and effective full stack development.
+ogImage: 'https://res.cloudinary.com/dsysvier5/image/upload/v1672928874/ssp-1-og_gqqr1i.jpg'
+description: Learn how to set up a repository with TypeScript, NextJS 13, Tailwindcss, deployed to Vercel for efficient and effective full stack development.
 ---
 
-Welcome to the [SaaS (Software as a Service) Starter Pack](https://mckilla.dev/tags/saas-starter-pack) series. In this series we're building an app from scratch using bleeding edge technologies. The end goal is to have a minimal, ready to deploy application that you can use as a starting point for rapidly validating your next SaaS business idea.
+Welcome to the [SaaS (Software as a Service) Starter Pack](https://mckilla.dev/tags/saas-starter-pack) series. In this series we're building a SaaS app from scratch using bleeding edge technologies. The end goal is to have a minimal, ready to deploy application that you can use as a starting point for rapidly prototyping and (hopefully) validating your next SaaS business idea.
 
-_Note: Each section represents a commit. Keep your eyes peeled for the computer (💻) emoji for the commit link._
+This is going to be an ever-evolving series; as the technologies we use change, so will this series. I'll be continually returning to the posts and associated repo to update them as new versions of the technologies are released.
 
-In this pilot episode we will be setting up a repository with TypeScript, NextJS 13 (with the experimental /app directory), Tailwindcss, MongoDB, and finally deploying it to Vercel.
+---
+
+In this pilot episode we'll be setting up a repository with TypeScript, NextJS 13 (with the experimental /app directory), Tailwindcss, and finally deploying it to Vercel.
 
 TL;DR - here's the repo 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack)
 
@@ -128,7 +129,7 @@ export default function Home() {
 }
 ```
 
-Last but not least, we need to specify a subset of the font to load. This is done in the `next.config.js` file.
+Last but not least, we need to specify a subset of the font to load. In a nutshell, this is a way to reduce the size of the font file by only loading the characters that we need. This is easily done in the `next.config.js` file.
 
 ```js
 // next.config.js
@@ -146,6 +147,24 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
-Looking much better already! 🎉
+Looking better already! 🎉
 
 [💻 commit](https://github.com/Seth-McKilla/saas-starter-pack/tree/bf8f43508ac8cb6ecf23291374085334d3afbcec)
+
+## Deploying to Vercel
+
+First, we need to create a new project on Vercel. This can be done by clicking the "Add New..." dropdown button on the [Vercel dashboard](https://vercel.com/dashboard) and selecting "Project".
+
+![New Vercel Project](/assets/images/posts/saas-starter-pack-1/vercel-new-project.png)
+
+Next, we need to connect our GitHub repo to Vercel. This can be done by clicking the "Import Project" button on the Vercel dashboard and selecting the "From Git Repository" option.
+
+![Vercel import repo](/assets/images/posts/saas-starter-pack-1/vercel-import-repo.png)
+
+Then simply click the big blue "Deploy" button to ship the app to production and automatically get a publicly accessible URL! 🎉
+
+## Wrapping up & next steps
+
+That's it! We've successfully created a Typescript NextJS 13 app with Tailwindcss from scratch and deployed it to Vercel. This is an excellent starting point for diving into the exciting world of SaaS app development.
+
+Next up, we're going to dive into wiring up the app to a database using the seamless [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas). Stay tuned!
