@@ -20,7 +20,10 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
-const socialImageURL = new URL(ogImage ? ogImage : SITE.ogImage, Astro.url.origin).href;
+const socialImageURL = new URL(
+  ogImage ? ogImage : SITE.ogImage,
+  Astro.url.origin
+).href;
 
 const fallbackImageURL = new URL(SITE.ogImage, Astro.url.origin).href;
 ---
@@ -53,7 +56,9 @@ const fallbackImageURL = new URL(SITE.ogImage, Astro.url.origin).href;
     <meta property="twitter:description" content={description} />
     <meta
       property="twitter:image"
-      content={socialImageURL.endsWith('.svg') ? fallbackImageURL : socialImageURL}
+      content={socialImageURL.endsWith('.svg')
+        ? fallbackImageURL
+        : socialImageURL}
     />
 
     <!-- Google Font -->
@@ -66,12 +71,22 @@ const fallbackImageURL = new URL(SITE.ogImage, Astro.url.origin).href;
       onload="this.onload=null;this.rel='stylesheet'"
     />
 
+    <!-- Plausible Analytics -->
+    <script
+      defer
+      data-domain="mckilla.dev"
+      src="https://plausible.io/js/script.js"
+    ></script>
+
     {
       // If PUBLIC_GOOGLE_SITE_VERIFICATION is set in the environment variable,
       // include google-site-verification tag in the heading
       // Learn more: https://support.google.com/webmasters/answer/9008080#meta_tag_verification&zippy=%2Chtml-tag
       googleSiteVerification && (
-        <meta name="google-site-verification" content={googleSiteVerification} />
+        <meta
+          name="google-site-verification"
+          content={googleSiteVerification}
+        />
       )
     }
 
