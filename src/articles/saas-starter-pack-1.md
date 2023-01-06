@@ -23,7 +23,7 @@ This is going to be an ever-evolving series; as the technologies we use change, 
 
 In this pilot episode we'll be setting up a repository with TypeScript, NextJS 13 (with the experimental /app directory), Tailwindcss, and finally deploying it to Vercel.
 
-TL;DR - here's the repo 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack)
+TL;DR - here's the snapshot of the repo with the below steps completed 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack/tree/Part-1)
 
 ## Table of contents
 
@@ -34,6 +34,7 @@ TL;DR - here's the repo 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla
 - [Package Manager](https://pnpm.io/) (I'll be using pnpm)
 - [git](https://git-scm.com/)
 - [GitHub Account](https://github.com/)
+- [Vercel Account](https://vercel.com/)
 
 ## Initializing the TypeScript NextJS 13 App and pushing to GitHub
 

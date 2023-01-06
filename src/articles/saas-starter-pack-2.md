@@ -21,33 +21,24 @@ This is going to be an ever-evolving series; as the technologies we use change, 
 
 ---
 
+In this episode we'll be connecting our NextJS 13 app to MongoDB with Vercel using the [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas). If you haven't already, I recommend you read [Part 1](https://mckilla.dev/saas-starter-pack-1) before continuing.
+
+TL;DR - here's the snapshot of the repo with the below steps completed 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack/tree/Part-1)
+
 ## Table of contents
 
 ## Prerequisites
 
-## Deploying to Vercel
-
-Wait, what about setting up MongoDB?! Worry not, Vercel has a seamless [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas) that we'll be using after deploying to have a MongoDB database ready to go.
-
-### Deploy
-
-First, we need to create a new project on Vercel. This can be done by clicking the "Add New..." dropdown button on the [Vercel dashboard](https://vercel.com/dashboard) and selecting "Project".
-
-![New Vercel Project](/assets/images/posts/saas-starter-pack-1/vercel-new-project.png)
-
-Next, we need to connect our GitHub repo to Vercel. This can be done by clicking the "Import Project" button on the Vercel dashboard and selecting the "From Git Repository" option.
-
-![Vercel import repo](/assets/images/posts/saas-starter-pack-1/vercel-import-repo.png)
-
-Then simply click the big blue "Deploy" button to ship the app to production and automatically get a publicly accessible URL! 🎉
+1. Everything from [Part 1](https://mckilla.dev/saas-starter-pack-1)
+2. A [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account
 
 ### MongoDB Atlas Integration
 
-The last step is to add the [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas) 👈 Go ahead and click that hyperlink and select the "Add Integration" button in the top right corner.
+First things first, let's wire our app deployed to Vercel with the [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas) 👈 Go ahead and click that hyperlink and select the "Add Integration" button in the top right corner.
 
 ![Add atlas integration](/assets/images/posts/saas-starter-pack-1/add-atlas-integration.png)
 
-The next few steps are pretty self explanatory, so rather than overloading you with screenshots, I'll just summarize the steps:
+The next few steps are pretty self explanatory, so rather than overloading you with screenshots, I'll just summarize the steps for both the new and existing Atlas integration flows:
 
 #### New Atlas integration
 
