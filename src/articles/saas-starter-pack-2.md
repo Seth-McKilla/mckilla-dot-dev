@@ -23,7 +23,7 @@ This is going to be an ever-evolving series; as the technologies we use change, 
 
 In this episode we'll be connecting our NextJS 13 app to MongoDB with Vercel using the [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas). If you haven't already, I recommend you read [Part 1](https://mckilla.dev/saas-starter-pack-1) before continuing.
 
-TL;DR - here's the snapshot of the repo with the below steps completed 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack/tree/Part-1)
+TL;DR - here's the snapshot of the repo with the below steps completed 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack/tree/Part-2)
 
 ## Table of contents
 
