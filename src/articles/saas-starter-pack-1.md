@@ -11,7 +11,7 @@ tags:
   - tailwindcss
   - vercel
   - saas-starter-pack
-ogImage: 'https://res.cloudinary.com/dsysvier5/image/upload/v1672928874/ssp-1-og_gqqr1i.jpg'
+ogImage: 'https://res.cloudinary.com/dsysvier5/image/upload/v1672928874/saas-starter-pack/Post-1/ssp-1-og_gqqr1i.jpg'
 description: Learn how to set up a repository with TypeScript, NextJS 13, Tailwindcss, deployed to Vercel for efficient and effective full stack development.
 ---
 

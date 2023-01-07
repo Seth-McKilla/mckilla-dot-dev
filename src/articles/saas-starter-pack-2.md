@@ -4,7 +4,7 @@ datetime: 2023-01-08T14:00:00Z
 title: 'Connecting a NextJS 13 App to MongoDB with Vercel'
 slug: saas-starter-pack-2
 featured: true
-draft: true
+draft: false
 tags:
   - nextjs
   - typescript
