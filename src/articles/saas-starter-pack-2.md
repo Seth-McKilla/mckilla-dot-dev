@@ -1,7 +1,7 @@
 ---
 author: Seth McCullough
 datetime: 2023-01-08T14:00:00Z
-title: 'Connecting a NextJS 13 App to MongoDB with Vercel'
+title: 'Connecting a NextJS 13 App to MongoDB Atlas with Vercel'
 slug: saas-starter-pack-2
 featured: true
 draft: false
@@ -21,7 +21,7 @@ This is going to be an ever-evolving series; as the technologies we use change, 
 
 ---
 
-In this episode we'll be connecting our NextJS 13 app to MongoDB with Vercel using the [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas). If you haven't already, I recommend you read [Part 1](https://mckilla.dev/saas-starter-pack-1) before continuing.
+In this episode we'll be connecting our NextJS 13 app to MongoDB Atlas with Vercel using the [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas). If you haven't already, I recommend you read [Part 1](https://mckilla.dev/saas-starter-pack-1) before continuing.
 
 TL;DR - here's the snapshot of the repo with the below steps completed 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack/tree/Part-2)
 
@@ -29,7 +29,7 @@ TL;DR - here's the snapshot of the repo with the below steps completed 👉 [Saa
 
 ## Prerequisites
 
-1. Everything from [Part 1](https://mckilla.dev/saas-starter-pack-1)
+1. Everything from [Part 1](https://mckilla.dev/posts/saas-starter-pack-1)
 2. A [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account
 
 ### MongoDB Atlas Integration
@@ -46,3 +46,11 @@ The next few steps are pretty self explanatory, so rather than overloading you w
 2.
 
 #### Configure existing Atlas integration
+
+### Adding a development database
+
+### Syncing environment variables
+
+### Wiring up the database to our app
+
+### Wrapping up & next steps
