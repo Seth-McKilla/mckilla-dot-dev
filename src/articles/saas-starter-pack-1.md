@@ -23,7 +23,7 @@ This is going to be an ever-evolving series; as the technologies we use change, 
 
 In this pilot episode we'll be setting up a repository with TypeScript, NextJS 13 (with the experimental /app directory), Tailwindcss, and finally deploying it to Vercel.
 
-TL;DR - here's the snapshot of the repo with the below steps completed 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack/tree/Part-1)
+TL;DR 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack/tree/Part-1)
 
 ## Table of contents
 
@@ -156,11 +156,11 @@ Looking better already! 🎉
 
 First, we need to create a new project on Vercel. This can be done by clicking the "Add New..." dropdown button on the [Vercel dashboard](https://vercel.com/dashboard) and selecting "Project".
 
-![New Vercel Project](/assets/images/posts/saas-starter-pack-1/vercel-new-project.png)
+![New Vercel Project](https://res.cloudinary.com/dsysvier5/image/upload/v1673093734/saas-starter-pack/Post-1/vercel-new-project_ahbvv9.png)
 
 Next, we need to connect our GitHub repo to Vercel. This can be done by clicking the "Import Project" button on the Vercel dashboard and selecting the "From Git Repository" option.
 
-![Vercel import repo](/assets/images/posts/saas-starter-pack-1/vercel-import-repo.png)
+![Vercel import repo](https://res.cloudinary.com/dsysvier5/image/upload/v1673093734/saas-starter-pack/Post-1/vercel-import-repo_nkypgw.png)
 
 Then simply click the big blue "Deploy" button to ship the app to production and automatically get a publicly accessible URL! 🎉
 

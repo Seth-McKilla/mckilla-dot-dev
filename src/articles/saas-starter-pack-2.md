@@ -21,36 +21,36 @@ This is going to be an ever-evolving series; as the technologies we use change, 
 
 ---
 
-In this episode we'll be connecting our NextJS 13 app to MongoDB Atlas with Vercel using the [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas). If you haven't already, I recommend you read [Part 1](https://mckilla.dev/saas-starter-pack-1) before continuing.
+In this episode we'll be connecting our NextJS 13 app to MongoDB Atlas with Vercel using the [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas). If you haven't already, I recommend you read [Part 1](https://mckilla.dev/posts/saas-starter-pack-1) before continuing.
 
-TL;DR - here's the snapshot of the repo with the below steps completed 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack/tree/Part-2)
+TL;DR 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack/tree/Part-2)
 
 ## Table of contents
 
 ## Prerequisites
 
-1. Everything from [Part 1](https://mckilla.dev/posts/saas-starter-pack-1)
+1. Our app deployed to Vercel from [Part 1](https://mckilla.dev/posts/saas-starter-pack-1)
 2. A [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account
 
-### MongoDB Atlas Integration
+## Configure MongoDB Atlas Integration
 
-First things first, let's wire our app deployed to Vercel with the [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas) 👈 Go ahead and click that hyperlink and select the "Add Integration" button in the top right corner.
+First things first, let's wire up our app deployed to Vercel with the [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas) 👈 Go ahead and click that hyperlink and select the "Add Integration" button in the top right corner.
 
-![Add atlas integration](/assets/images/posts/saas-starter-pack-1/add-atlas-integration.png)
+![Add atlas integration](https://res.cloudinary.com/dsysvier5/image/upload/v1673093754/saas-starter-pack/Post-2/add-atlas-integration_p4rmsl.png)
 
 The next few steps are pretty self explanatory, so rather than overloading you with screenshots, I'll just summarize the steps for both the new and existing Atlas integration flows:
 
-#### New Atlas integration
+### New Atlas integration
 
-1. Select your Vercel Scope (your Vercel account where the repo we just deployed is located). Note: if you see that the integration is already installed, switch to the "Configure existing Atlas integration" section below.
+1. Select your Vercel Scope (your Vercel account where the repo we just deployed is located). Note: if you see that the integration is already installed, switch to the "Existing Atlas integration" section below.
 2.
 
-#### Configure existing Atlas integration
+### Existing Atlas integration
 
-### Adding a development database
+## Adding a development database
 
-### Syncing environment variables
+## Syncing environment variables
 
-### Wiring up the database to our app
+## Consuming data in our app
 
-### Wrapping up & next steps
+## Wrapping up & next steps
