@@ -4,14 +4,14 @@ datetime: 2023-01-08T14:00:00Z
 title: 'Connecting a NextJS 13 App to MongoDB Atlas with Vercel'
 slug: saas-starter-pack-2
 featured: true
-draft: true
+draft: false
 tags:
   - nextjs
   - typescript
   - mongodb
   - vercel
   - saas-starter-pack
-ogImage: ''
+ogImage: 'https://res.cloudinary.com/dsysvier5/image/upload/v1673298028/saas-starter-pack/Post-2/ssp-2-og_v4bfc3.jpg'
 description: Learn how to connect a NextJS 13 app to MongoDB with Vercel using the MongoDB Atlas integration.
 ---
 
@@ -258,3 +258,7 @@ Hooray, we did indeed actually make it work! 🎉
 [💻 commit](https://github.com/Seth-McKilla/saas-starter-pack/tree/a1a8980b509f2692d39e138130549b73adf5745d)
 
 ## Wrapping up & next steps
+
+In this post, we learned how to create and wire up a MongoDB Atlas database to our Next.js 13 app. The data was then rendered with ease through the use of asynchronous React server components. We also learned how to setup a single source of truth for our environment variables by using Vercel's environment variables settings and CLI tool. This makes it possible to seamlessly sync our local environment variables with our Vercel project.
+
+Next up, we're going to tackle a tough one: 🔒 Authentication. Our weapon of choice is going to be the amazing [Auth.js](https://authjs.dev/) package to authenticate users on the edge 🔪 Stay tuned!
