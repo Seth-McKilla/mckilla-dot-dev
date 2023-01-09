@@ -154,4 +154,107 @@ Going forward, I strongly encourage changing your mindset to enter all environme
 
 ## Consuming data in our app
 
+Now we need to link our app to our database. We're going to achieve this by setting up a promise that will resolve to a MongoDB client. We'll then use this client to query our database.
+
+### Creating the client promise
+
+First things first, let's add the mongodb package to our app. Run the following command in your terminal:
+
+```bash
+pnpm add mongodb
+```
+
+Then we're going to create a new directory called `lib/mongodb` in the root of our project. Inside this directory, create a new file called `client.ts` and add the following code:
+
+```ts
+// lib/mongodb/client.ts
+
+declare global {
+  var _mongoClientPromise: Promise<any>;
+}
+
+import { MongoClient } from 'mongodb';
+
+const uri = process.env.MONGODB_URI as string;
+const options = {};
+
+let client: MongoClient;
+let clientPromise: Promise<any>;
+
+if (!process.env.MONGODB_URI) {
+  throw new Error('MongoDB URI is not defined');
+}
+
+if (process.env.NODE_ENV === 'development') {
+  if (!global._mongoClientPromise) {
+    client = new MongoClient(uri, options);
+    global._mongoClientPromise = client.connect();
+  }
+  clientPromise = global._mongoClientPromise;
+} else {
+  client = new MongoClient(uri, options);
+  clientPromise = client.connect();
+}
+
+export default clientPromise;
+```
+
+_Note: We're going to have additional mongodb libraries in the future, so that's the reason for additional mongodb directory inside of `lib`. Keeps things clean and organized 💫_
+
+Before we continue to the next section, let's add the lib path to our tsconfig.json file:
+
+```json
+{
+  "compilerOptions": {
+    ...
+    "paths": {
+      "@/lib/*": ["./lib/*"]
+    }
+  }
+}
+```
+
+Now we're able to import libraries from our `lib` directory with the `@/lib` alias. For example, we can import our client promise like so:
+
+```ts
+import clientPromise from '@/lib/mongodb/client';
+```
+
+[💻 commit](https://github.com/Seth-McKilla/saas-starter-pack/tree/5e25192886857e3e314e8a9cdd4d1eab39d680b3)
+
+### Displaying data in our app
+
+Now that we have our client promise set up, let's go ahead and use it to query our database and display the data in our app. This is where the power of Next.js 13 and React server components really shines! We can simply update our Home component found within `app/page.tsx` to be asynchronous and await the data from our database 🤯
+
+```tsx
+// app/page.tsx
+
+import clientPromise from '@/lib/mongodb/client';
+
+export default async function Home() {
+  const data = await getData();
+
+  return (
+    <h1 className="grid h-screen text-3xl font-bold text-center place-items-center">
+      {data[0]?.message}
+    </h1>
+  );
+}
+
+async function getData() {
+  const client = await clientPromise;
+  const db = client.db('main');
+  const data = await db.collection('test').find({}).toArray();
+  return data;
+}
+```
+
+If you've followed along so far, you should now see the following when booting up your local development environment:
+
+![Atlas data displayed on app](https://res.cloudinary.com/dsysvier5/image/upload/v1673289856/saas-starter-pack/Post-2/success_wqjkck.png)
+
+Hooray, we did indeed actually make it work! 🎉
+
+[💻 commit](https://github.com/Seth-McKilla/saas-starter-pack/tree/a1a8980b509f2692d39e138130549b73adf5745d)
+
 ## Wrapping up & next steps
