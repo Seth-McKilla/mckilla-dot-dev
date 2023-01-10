@@ -1,13 +1,13 @@
 ---
 author: Seth McCullough
-datetime: 2023-01-08T14:00:00Z
+datetime: 2023-01-09T14:00:00Z
 title: 'Connecting a NextJS 13 App to MongoDB Atlas with Vercel'
 slug: saas-starter-pack-2
 featured: true
 draft: false
 tags:
-  - nextjs
   - typescript
+  - nextjs
   - mongodb
   - vercel
   - saas-starter-pack
