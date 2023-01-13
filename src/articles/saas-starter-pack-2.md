@@ -204,6 +204,8 @@ _Note: We're going to have additional mongodb libraries in the future, so that's
 Before we continue to the next section, let's add the lib path to our tsconfig.json file:
 
 ```json
+// tsconfig.json
+
 {
   "compilerOptions": {
     ...
