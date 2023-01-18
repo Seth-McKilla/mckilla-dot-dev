@@ -3,7 +3,7 @@ author: Seth McCullough
 datetime: 2023-01-05T14:00:00Z
 title: 'TypeScript, NextJS 13, Tailwindcss, and Vercel: The Full Stack Dream Team'
 slug: saas-starter-pack-1
-featured: true
+featured: false
 draft: false
 tags:
   - typescript
