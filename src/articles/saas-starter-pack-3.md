@@ -1,6 +1,6 @@
 ---
 author: Seth McCullough
-datetime: 2023-01-12T14:00:00Z
+datetime: 2023-01-18T13:00:00Z
 title: Creating a simple application template with TailwindUI and React Server Components
 slug: saas-starter-pack-3
 featured: true
