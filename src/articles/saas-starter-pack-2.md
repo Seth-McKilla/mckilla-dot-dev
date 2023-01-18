@@ -263,4 +263,4 @@ Hooray, we did indeed actually make it work! 🎉
 
 In this post, we learned how to create and wire up a MongoDB Atlas database to our Next.js 13 app. The data was then rendered with ease through the use of asynchronous React server components. We also learned how to setup a single source of truth for our environment variables by using Vercel's environment variables settings and CLI tool. This makes it possible to seamlessly sync our local environment variables with our Vercel project.
 
-Next up, we're going to tackle a tough one: 🔒 Authentication. Our weapon of choice is going to be the amazing [Auth.js](https://authjs.dev/) package to authenticate users on the edge 🔪 Stay tuned!
+Next up we're going to setup some components required to get the app ready for authentication. We'll also be adding a few more pages to the app to get a better understanding of how Next.js 13 and React server components work.
