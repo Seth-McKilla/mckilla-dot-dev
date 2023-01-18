@@ -1,6 +1,6 @@
 ---
 author: Seth McCullough
-datetime: 2023-01-09T14:00:00Z
+datetime: 2023-01-09T08:00:00Z
 title: 'Connecting a NextJS 13 App to MongoDB Atlas with Vercel'
 slug: saas-starter-pack-2
 featured: false
