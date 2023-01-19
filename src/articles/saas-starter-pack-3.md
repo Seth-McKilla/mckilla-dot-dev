@@ -15,7 +15,7 @@ ogImage: 'https://res.cloudinary.com/dsysvier5/image/upload/v1674046236/saas-sta
 description: 'Learn how to create a navbar and sign-in page with Tailwindcss and TailwindUI'
 ---
 
-Welcome to the [SaaS (Software as a Service) Starter Pack](https://mckilla.dev/tags/saas-starter-pack) series. In this series we're building a SaaS app from scratch using bleeding edge technologies. The end goal is to have a minimal, ready to deploy application that you can use as a starting point for rapidly prototyping and (hopefully) validating your next SaaS business idea.
+Welcome to the [SaaS (Software as a Service) Starter Pack](https://mckilla.dev/tags/saas-starter-pack) series. In this series we're building a SaaS app from scratch using bleeding edge technologies. The end goal is to have a minimal, ready to deploy application that you can use as a starting point for rapidly prototyping your next SaaS business idea.
 
 This is going to be an ever-evolving series; as the technologies we use change, so will this series. I'll be continually returning to the posts and associated repo to update them as new versions of the technologies are released.
 
@@ -524,7 +524,7 @@ export default function Input({ id, name, label, ...rest }: Props) {
 Two last minor things to update before wrapping this post up. We need to replace the logo within the `Navbar.tsx` component with the new `Logo` component and update the root page to make a little more sense rather than rendering data from the database.
 
 ```tsx
-// app/Nabvar.tsx
+// app/Navbar.tsx
 
 import Link from 'next/link';
 
