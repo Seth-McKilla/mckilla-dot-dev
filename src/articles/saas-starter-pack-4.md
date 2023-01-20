@@ -33,3 +33,13 @@ TL;DR 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack
 
 1. A NextJS app connected to a MongoDB Atlas database with a login page and a navbar (see the completed [Part 3](https://mckilla.dev/articles/saas-starter-pack-3) app)
 2. A [SendGrid](https://signup.sendgrid.com/) account
+
+## Setting up Auth.js
+
+## Configuring Sendgrid SMTP
+
+## Updating frontend authentication status
+
+## Creating the middleware
+
+## Wrapping up & next steps
