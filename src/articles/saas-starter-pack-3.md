@@ -31,6 +31,15 @@ TL;DR 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack
 
 1. A new, blank, Typescript NextJS application (See [Part 1](https://mckilla.dev/posts/saas-starter-pack-1))
 
+If you'd like to pick up where we left off in the previous post, run the following commands:
+
+```bash
+git clone https://github.com/Seth-McKilla/saas-starter-pack.git
+cd saas-starter-pack
+git checkout Part-1
+pnpm install
+```
+
 ## Creating a navigation bar
 
 One of the most important parts of authentication is a way for users to easily know their current authentication status (i.e. are they logged in our out). The navigation bar is the perfect place to display this information.

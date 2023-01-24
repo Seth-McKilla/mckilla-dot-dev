@@ -4,7 +4,7 @@ datetime: 2023-01-21T08:00:00Z
 title: Authenticating users on the edge with Auth.js and NextJS 13 middleware
 slug: saas-starter-pack-4
 featured: false
-draft: true
+draft: false
 tags:
   - typescript
   - nextjs
@@ -33,6 +33,15 @@ TL;DR 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack
 
 1. A NextJS app connected to a MongoDB Atlas database with a login page and a navbar (see the completed [Part 3](https://mckilla.dev/articles/saas-starter-pack-3) app)
 2. A [SendGrid](https://signup.sendgrid.com/) account
+
+If you'd like to pick up where we left off in the previous post, run the following commands:
+
+```bash
+git clone https://github.com/Seth-McKilla/saas-starter-pack.git
+cd saas-starter-pack
+git checkout Part-3
+pnpm install
+```
 
 ## Setting up Auth.js
 

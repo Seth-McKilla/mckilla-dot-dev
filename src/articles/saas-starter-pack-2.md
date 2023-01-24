@@ -33,6 +33,15 @@ TL;DR 👉 [SaaS Starter Pack](https://github.com/Seth-McKilla/saas-starter-pack
 2. A [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account
 3. The [Vercel CLI](https://vercel.com/docs/cli) installed
 
+If you'd like to pick up where we left off in the previous post, run the following commands:
+
+```bash
+git clone https://github.com/Seth-McKilla/saas-starter-pack.git
+cd saas-starter-pack
+git checkout Part-2
+pnpm install
+```
+
 ## Configure MongoDB Atlas Integration
 
 First things first, let's wire up our app deployed to Vercel with the [MongoDB Atlas integration](https://vercel.com/integrations/mongodbatlas) 👈 Go ahead and click that hyperlink and select the "Add Integration" button in the top right corner.
