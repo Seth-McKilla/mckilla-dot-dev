@@ -117,11 +117,19 @@ Before we leave SendGrid, we need to verify a single sender identity. Head on ov
 
 ⚠️ Make sure to take note of the email address you used to verify your sender identity. You'll need this for the next step.
 
-The last thing we need to do is configure our environment variables. Head on over to the Vercel dashboard and click the "Environment Variables" button on the left sidebar. Then add the following environment variables.
+Now we need to configure our environment variables. Head on over to the Vercel dashboard and click the "Environment Variables" button on the left sidebar. Then add the following environment variables.
 
-![SMTP env vars](https://res.cloudinary.com/dsysvier5/image/upload/v1674649578/saas-starter-pack/Part-4/SMTP_env_vars_tnrtdv.png)
+![SMTP env vars](https://res.cloudinary.com/dsysvier5/image/upload/v1674650216/saas-starter-pack/Part-4/SMTP_env_vars_ngs6y5.png)
 
-The `EMAIL_SERVER_PASSWORD` is the API Key we copied earlier and the `EMAIL_FROM` is the email address we used to verify our sender identity.
+The `EMAIL_SERVER_PASSWORD` is the API Key we copied earlier and the `EMAIL_FROM` is the email address we used to verify our sender identity. Also make sure that all scopes are selected for theses variables (production, preview, and development).
+
+Last but not least, let's pull these variables to our local development environment.
+
+```bash
+vc env pull .env.local
+```
+
+_Note: Before running this command, ensure you have the [Vercel CLI](https://vercel.com/download) installed and your local repo linked to your Vercel project. If you need help with this, check out [Post 2](https://mckilla.dev/articles/saas-starter-pack-2) of this series._
 
 SMTP complete! Now on to wiring this up to MongoDB using the NextAuth MongoDB adapter.
 
