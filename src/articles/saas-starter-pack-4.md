@@ -95,6 +95,38 @@ Now that all of these options are configured, let's wire up SendGrid to add the 
 
 ## Configuring Sendgrid SMTP
 
+We're going to be using SendGrid's SMTP service to send our magic links to users, but we'll also need NodeMailer as a peer dependency when using the Email Provider. So let's install that as well:
+
+```bash
+pnpm add -D nodemailer
+```
+
+Now we can head over to our SendGrid dashboard and grab the SMTP credentials by creating a new API Key from the Settings > API Keys page.
+
+![SendGrid API Key](https://res.cloudinary.com/dsysvier5/image/upload/v1674647309/saas-starter-pack/Part-4/Sendgrid_API_Key_kplrll.png)
+
+Select the "Full Access" permissions and give it a name. Then click the "Create & View" button to view the API Key.
+
+![Create API Key](https://res.cloudinary.com/dsysvier5/image/upload/v1674647654/saas-starter-pack/Part-4/Create_API_Key_jcubqj.png)
+
+⚠️ Copy this value and save it for later! You won't be able to view it again after you leave this page.
+
+Before we leave SendGrid, we need to verify a single sender identity. Head on over to the Settings > Sender Authentication page and click the "Verify a New Sender" button. Enter the required information and follow the necessary steps to verify your sender identity.
+
+![Verify Sender Identity](https://res.cloudinary.com/dsysvier5/image/upload/v1674648943/saas-starter-pack/Part-4/Sender_Authentication_e9ipmo.png)
+
+⚠️ Make sure to take note of the email address you used to verify your sender identity. You'll need this for the next step.
+
+The last thing we need to do is configure our environment variables. Head on over to the Vercel dashboard and click the "Environment Variables" button on the left sidebar. Then add the following environment variables.
+
+![SMTP env vars](https://res.cloudinary.com/dsysvier5/image/upload/v1674649578/saas-starter-pack/Part-4/SMTP_env_vars_tnrtdv.png)
+
+The `EMAIL_SERVER_PASSWORD` is the API Key we copied earlier and the `EMAIL_FROM` is the email address we used to verify our sender identity.
+
+SMTP complete! Now on to wiring this up to MongoDB using the NextAuth MongoDB adapter.
+
+## Setting up the MongoDB adapter
+
 ## Updating frontend authentication status
 
 ## Creating the middleware
