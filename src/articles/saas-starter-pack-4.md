@@ -131,9 +131,59 @@ vc env pull .env.local
 
 _Note: Before running this command, ensure you have the [Vercel CLI](https://vercel.com/download) installed and your local repo linked to your Vercel project. If you need help with this, check out [Post 2](https://mckilla.dev/articles/saas-starter-pack-2) of this series._
 
-SMTP complete! Now on to wiring this up to MongoDB using the NextAuth MongoDB adapter.
+SMTP complete! Now on to wiring this up to MongoDB using the NextAuth MongoDB adapter. When using the Email Provider, we need to have a database to store our users in. So let's get that set up next.
 
 ## Setting up the MongoDB adapter
+
+NextAuth has a built-in adapter for MongoDB, so first things first, let's install it.
+
+```bash
+pnpm add @next-auth/mongodb-adapter
+```
+
+Now the only thing left to do is configure the adapter. Let's head over to the `pages/api/auth` directory, open the `[...nextauth].ts` file, and revise the code to the following:
+
+```ts
+// pages/api/auth/[...nextauth].ts
+
+import NextAuth from 'next-auth';
+import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
+import EmailProvider from 'next-auth/providers/email';
+
+import clientPromise from '@/lib/mongodb/client';
+
+export default NextAuth({
+  adapter: MongoDBAdapter(clientPromise),
+  providers: [
+    EmailProvider({
+      server: {
+        host: process.env.EMAIL_SERVER_HOST,
+        port: Number(process.env.EMAIL_SERVER_PORT),
+        auth: {
+          user: process.env.EMAIL_SERVER_USER,
+          pass: process.env.EMAIL_SERVER_PASSWORD,
+        },
+      },
+      from: process.env.EMAIL_FROM,
+    }),
+  ],
+  pages: {
+    signIn: '/sign-in',
+    signOut: '/',
+  },
+  session: {
+    strategy: 'jwt',
+  },
+});
+```
+
+_Reminder: This code is assuming you've already configured your MongoDB connection from a previous post. If you haven't, check out [Post 2](https://mckilla.dev/posts/saas-starter-pack-2) of this series._
+
+Now that we've got the adapter wired up, let's update our frontend sign-in form to initiate the authentication flow. We're going to use one of my favorite libraries for handling forms in React, [React Hook Form](https://react-hook-form.com/).
+
+[💻 commit](https://github.com/Seth-McKilla/saas-starter-pack/tree/6773715265c91f6a28b7d056f9b06f543d15be4a)
+
+## Setting up React-Hook-Form
 
 ## Updating frontend authentication status
 
