@@ -190,7 +190,3 @@ Now that we've got the adapter wired up, let's update our frontend sign-in form 
 ## Creating the middleware
 
 ## Wrapping up & next steps
-
-```
-
-```

@@ -7,6 +7,7 @@ import getPageNumbers from '@utils/getPageNumbers';
 import type { MarkdownInstance } from 'astro';
 import type { Frontmatter } from 'src/types';
 import slugify from '@utils/slugify';
+import { isDev } from '@utils/environment';
 
 export interface Props {
   post: MarkdownInstance<Frontmatter>;
@@ -30,7 +31,9 @@ type PagePaths = {
 export async function getStaticPaths() {
   const posts = await Astro.glob<Frontmatter>('../../articles/**/*.md');
 
-  const filteredPosts = posts.filter(({ frontmatter }) => !frontmatter.draft);
+  const filteredPosts = posts.filter(
+    ({ frontmatter }) => isDev || !frontmatter.draft
+  );
 
   let postResult: PostResult = filteredPosts.map((post) => {
     return {
@@ -43,9 +46,11 @@ export async function getStaticPaths() {
     };
   });
 
-  const pagePaths: PagePaths = getPageNumbers(filteredPosts.length).map((pageNum) => ({
-    params: { slug: String(pageNum) },
-  }));
+  const pagePaths: PagePaths = getPageNumbers(filteredPosts.length).map(
+    (pageNum) => ({
+      params: { slug: String(pageNum) },
+    })
+  );
 
   return [...postResult, ...pagePaths];
 }
@@ -60,7 +65,9 @@ const sortedPosts = getSortedPosts(posts);
 const totalPages = getPageNumbers(sortedPosts.length);
 
 const currentPage =
-  slug && !isNaN(Number(slug)) && totalPages.includes(Number(slug)) ? Number(slug) : 0;
+  slug && !isNaN(Number(slug)) && totalPages.includes(Number(slug))
+    ? Number(slug)
+    : 0;
 const lastPost = currentPage * SITE.postPerPage;
 const startPost = lastPost - SITE.postPerPage;
 
@@ -71,6 +78,10 @@ const paginatedPosts = sortedPosts.slice(startPost, lastPost);
   post ? (
     <PostDetails post={post} />
   ) : (
-    <Posts posts={paginatedPosts} pageNum={currentPage} totalPages={totalPages.length} />
+    <Posts
+      posts={paginatedPosts}
+      pageNum={currentPage}
+      totalPages={totalPages.length}
+    />
   )
 }
