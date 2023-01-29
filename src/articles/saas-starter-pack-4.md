@@ -179,11 +179,74 @@ export default NextAuth({
 
 _Reminder: This code is assuming you've already configured your MongoDB connection from a previous post. If you haven't, check out [Post 2](https://mckilla.dev/posts/saas-starter-pack-2) of this series._
 
-Now that we've got the adapter wired up, let's update our frontend sign-in form to initiate the authentication flow. We're going to use one of my favorite libraries for handling forms in React, [React Hook Form](https://react-hook-form.com/).
+Now that we've got the adapter wired up, let's update our frontend sign-in form to initiate the authentication flow. We're going to use one of my favorite library combinations for handling forms in React, [React Hook Form](https://react-hook-form.com/) + [Yup](https://github.com/jquense/yup).
 
 [💻 commit](https://github.com/Seth-McKilla/saas-starter-pack/tree/6773715265c91f6a28b7d056f9b06f543d15be4a)
 
 ## Setting up React-Hook-Form
+
+First things first, you guessed it, let's install the required packages for this beautiful combination.
+
+```bash
+pnpm add react-hook-form yup @hookform/resolvers
+```
+
+Now let's head over to the `components` directory to wire up our existing `SignInForm` component. Open the `SignInForm.tsx` file and revise the code to the following:
+
+```tsx
+'use client';
+
+import { LockClosedIcon } from '@heroicons/react/20/solid';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+
+import Button from '@/components/Button';
+import Input from '@/components/Input';
+
+const schema = yup.object({
+  email: yup
+    .string()
+    .email('Please enter a valid format of name@example.com')
+    .required('Email is required'),
+});
+type FormData = yup.InferType<typeof schema>;
+
+export default function SignInForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data: FormData) => {
+    alert(JSON.stringify(data));
+  };
+
+  return (
+    <form className="mt-4 space-y-3" onSubmit={handleSubmit(onSubmit)}>
+      <Input
+        name="email"
+        label="Email address"
+        register={register}
+        error={errors?.email?.message}
+      />
+
+      <Button type="submit">
+        <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+          <LockClosedIcon
+            className="w-5 h-5 text-gray-500"
+            aria-hidden="true"
+          />
+        </span>
+        Sign in
+      </Button>
+    </form>
+  );
+}
+```
 
 ## Updating frontend authentication status
 
