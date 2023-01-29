@@ -98,7 +98,7 @@ Now that all of these options are configured, let's wire up SendGrid to add the 
 We're going to be using SendGrid's SMTP service to send our magic links to users, but we'll also need NodeMailer as a peer dependency when using the Email Provider. So let's install that as well:
 
 ```bash
-pnpm add -D nodemailer
+pnpm add nodemailer
 ```
 
 Now we can head over to our SendGrid dashboard and grab the SMTP credentials by creating a new API Key from the Settings > API Keys page.
@@ -153,7 +153,9 @@ import EmailProvider from 'next-auth/providers/email';
 import clientPromise from '@/lib/mongodb/client';
 
 export default NextAuth({
-  adapter: MongoDBAdapter(clientPromise),
+  adapter: MongoDBAdapter(clientPromise, {
+    databaseName: process.env.MONGODB_AUTH_DB_NAME,
+  }),
   providers: [
     EmailProvider({
       server: {
@@ -179,6 +181,14 @@ export default NextAuth({
 
 _Reminder: This code is assuming you've already configured your MongoDB connection from a previous post. If you haven't, check out [Post 2](https://mckilla.dev/posts/saas-starter-pack-2) of this series._
 
+Note that we included the `databaseName` option in the adapter configuration. This is the name of the database we want to store our users in. If you leave this option blank, MongoDB with default to using a database named `test`, which doesn't make things very intuitive. All of our authentication data will be stored in this authentication database while our application data will be stored in the database we configured in the previous post. We'll setup a `config` directory in a future post to easily manage which database we want to interact with.
+
+⚠️ Make sure to add the new `MONGODB_AUTH_DB_NAME` environment variable (with all environment scopes) to your Vercel project and then pull it to your local development environment. Maybe you're getting the hang of this by now 😉
+
+```bash
+vc env pull .env.local
+```
+
 Now that we've got the adapter wired up, let's update our frontend sign-in form to initiate the authentication flow. We're going to use one of my favorite library combinations for handling forms in React, [React Hook Form](https://react-hook-form.com/) + [Yup](https://github.com/jquense/yup).
 
 [💻 commit](https://github.com/Seth-McKilla/saas-starter-pack/tree/6773715265c91f6a28b7d056f9b06f543d15be4a)
@@ -194,10 +204,13 @@ pnpm add react-hook-form yup @hookform/resolvers
 Now let's head over to the `components` directory to wire up our existing `SignInForm` component. Open the `SignInForm.tsx` file and revise the code to the following:
 
 ```tsx
+// app/sign-in/SignInForm.tsx
+
 'use client';
 
 import { LockClosedIcon } from '@heroicons/react/20/solid';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
@@ -208,7 +221,7 @@ const schema = yup.object({
   email: yup
     .string()
     .email('Please enter a valid format of name@example.com')
-    .required('Email is required'),
+    .required('Email address is required'),
 });
 type FormData = yup.InferType<typeof schema>;
 
@@ -216,13 +229,17 @@ export default function SignInForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data: FormData) => {
-    alert(JSON.stringify(data));
+  const onSubmit = async (data: FormData) => {
+    await signIn('email', {
+      email: data.email,
+      callbackUrl: `${window.location.origin}/dashboard`,
+      redirect: false,
+    });
   };
 
   return (
@@ -231,22 +248,31 @@ export default function SignInForm() {
         name="email"
         label="Email address"
         register={register}
+        loading={isSubmitting}
         error={errors?.email?.message}
       />
 
-      <Button type="submit">
+      <Button type="submit" disabled={isSubmitting}>
         <span className="absolute inset-y-0 left-0 flex items-center pl-3">
           <LockClosedIcon
             className="w-5 h-5 text-gray-500"
             aria-hidden="true"
           />
         </span>
-        Sign in
+        Send sign in link
       </Button>
     </form>
   );
 }
 ```
+
+Let's break down the steps of what's going on here.
+
+1. Import the required packages
+2. Define the schema for our form (in this case, just the email field). We're also using the `yup` package to define the schema, so we can use the `InferType` utility to infer the type of the schema. This will allow us to type the react-hook-form `useForm` hook and the `onSubmit` function.
+3. Initialize the react-hook-form `useForm` hook and pass in the `yupResolver` to use the `yup` schema we defined. This will allow us to use the `errors` object to display any validation errors.
+4. Define the `onSubmit` function. This function will be called when the form is submitted. We're using the `signIn` function from `next-auth/react` to initiate the authentication flow. We're passing in the `email` field from the form data and the `callbackUrl` which is the URL we want to redirect the user to after they've signed in. We're also passing in the `redirect` option and setting it to `false`. This is to prevent next-auth from redirecting the user to the standard "check your email" page. We'll handle the redirect ourselves in the next step.
+5. Render the form. We're using the `Input` component we created in the previous post and passing in the `register` function from the react-hook-form `useForm` hook. We're also passing in the `loading` and `error` props to display the loading state and any validation errors.
 
 ## Updating frontend authentication status
 
