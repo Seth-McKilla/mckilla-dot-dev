@@ -208,7 +208,7 @@ Now let's head over to the `components` directory to wire up our existing `SignI
 
 'use client';
 
-import { LockClosedIcon } from '@heroicons/react/20/solid';
+import { LockClosedIcon, PaperAirplaneIcon } from '@heroicons/react/20/solid';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { signIn } from 'next-auth/react';
 import { useForm } from 'react-hook-form';
@@ -229,7 +229,7 @@ export default function SignInForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<FormData>({
     resolver: yupResolver(schema),
   });
@@ -237,12 +237,22 @@ export default function SignInForm() {
   const onSubmit = async (data: FormData) => {
     await signIn('email', {
       email: data.email,
-      callbackUrl: `${window.location.origin}/dashboard`,
       redirect: false,
     });
   };
 
-  return (
+  return isSubmitSuccessful ? (
+    <div className="relative mt-4 w-full">
+      <div className="-mt-4 flex w-full items-center justify-center">
+        <PaperAirplaneIcon className="h-20 w-20 -rotate-45 text-gray-300" />
+      </div>
+      <p className="absolute top-0 left-0 text-lg font-bold">
+        {
+          "We've just sent you an email with a link to sign in! If you don't see it, please check your spam folder."
+        }
+      </p>
+    </div>
+  ) : (
     <form className="mt-4 space-y-3" onSubmit={handleSubmit(onSubmit)}>
       <Input
         name="email"
@@ -255,7 +265,7 @@ export default function SignInForm() {
       <Button type="submit" disabled={isSubmitting}>
         <span className="absolute inset-y-0 left-0 flex items-center pl-3">
           <LockClosedIcon
-            className="w-5 h-5 text-gray-500"
+            className="h-5 w-5 text-gray-500"
             aria-hidden="true"
           />
         </span>
@@ -271,11 +281,108 @@ Let's break down the steps of what's going on here.
 1. Import the required packages
 2. Define the schema for our form (in this case, just the email field). We're also using the `yup` package to define the schema, so we can use the `InferType` utility to infer the type of the schema. This will allow us to type the react-hook-form `useForm` hook and the `onSubmit` function.
 3. Initialize the react-hook-form `useForm` hook and pass in the `yupResolver` to use the `yup` schema we defined. This will allow us to use the `errors` object to display any validation errors.
-4. Define the `onSubmit` function. This function will be called when the form is submitted. We're using the `signIn` function from `next-auth/react` to initiate the authentication flow. We're passing in the `email` field from the form data and the `callbackUrl` which is the URL we want to redirect the user to after they've signed in. We're also passing in the `redirect` option and setting it to `false`. This is to prevent next-auth from redirecting the user to the standard "check your email" page. We'll handle the redirect ourselves in the next step.
-5. Render the form. We're using the `Input` component we created in the previous post and passing in the `register` function from the react-hook-form `useForm` hook. We're also passing in the `loading` and `error` props to display the loading state and any validation errors.
+4. Define the `onSubmit` function to submit the form with the entered email address. We're disabling the default redirect and instead rendering a "check your email" instead of the form on a successful sign-in.
+5. Render the form or the "check your email" message depending on the submitted status. We're using the `Input` component we created in the previous post and passing in the `register` function from the react-hook-form `useForm` hook. We're also sending the `loading` and `error` props to the component to display the loading state and any validation errors.
+
+Now we're displaying a nice little message to the user to check their email for the sign-in link!
+
+![Check Email Message](https://res.cloudinary.com/dsysvier5/image/upload/v1675254836/saas-starter-pack/Part-4/check_email_q6nbf9.png)
+
+Last thing before heading on the wiring up the authentication status is to update the `Button` and `Input` components to accept the `loading` and `error` props. I'm just going to paste the updated components here, the changes are pretty minimal, we're basically just adding the ability to disable the button on load and adding a loading, error, and useForm register props to the `Input` component.
+
+```tsx
+// app/components/Button.tsx
+
+'use client';
+
+import type { ButtonHTMLAttributes } from 'react';
+
+import { classNames } from '@/utils/styles';
+
+export default function Button({
+  children,
+  disabled,
+  ...rest
+}: ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      type="submit"
+      className={classNames(
+        'relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-black border border-transparent rounded-md group',
+        disabled ? 'cursor-not-allowed' : 'cursor-pointer'
+      )}
+      disabled={disabled}
+      {...rest}
+    >
+      {children}
+    </button>
+  );
+}
+```
+
+```tsx
+// app/components/Input.tsx
+
+'use client';
+
+import type { InputHTMLAttributes } from 'react';
+import type { UseFormRegister } from 'react-hook-form';
+
+import { classNames } from '@/utils/styles';
+
+type Props = {
+  name: string;
+  label: string;
+  register: UseFormRegister<any>;
+  loading?: boolean;
+  error?: string;
+} & InputHTMLAttributes<HTMLInputElement>;
+
+export default function Input({
+  name,
+  label,
+  register,
+  loading,
+  error,
+}: Props) {
+  return (
+    <>
+      <label htmlFor={name} className="sr-only">
+        {label}
+      </label>
+      <input
+        id={name}
+        placeholder={label}
+        className={classNames(
+          'relative block w-full px-3 py-2 text-gray-900 border rounded-md appearance-none sm:text-sm',
+          loading
+            ? 'cursor-not-allowed bg-gray-300 animate-pulse'
+            : 'cursor-text',
+          error
+            ? 'border-red-500 placeholder-red-400 focus:ring-red-500 focus:border-red-500 focus:outline-2 focus:outline-red-500 focus:z-10'
+            : 'placeholder-gray-500 border-gray-300'
+        )}
+        disabled={loading}
+        {...register(name)}
+      />
+      {error && (
+        <p className="text-sm text-left text-red-500" id={`${name}-error`}>
+          {error}
+        </p>
+      )}
+    </>
+  );
+}
+```
+
+On to updating the frontend authentication status!
+
+[💻 commit](https://github.com/Seth-McKilla/saas-starter-pack/tree/214cdbf2c5437289dcaff5aa3fca6464ae73cb7e)
 
 ## Updating frontend authentication status
 
 ## Creating the middleware
 
 ## Wrapping up & next steps
+
+If you have any questions about the code, feel free to reach out to me on Twitter [@sethmckilla](https://twitter.com/sethmckilla).
